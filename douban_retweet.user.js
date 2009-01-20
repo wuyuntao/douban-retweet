@@ -100,7 +100,10 @@ $(function() {
 
             if (!comment.length) {
                 // 获取有多人同时推荐时候的评论
-                comment = $(this).find('.indentrec:first .norquote').text().match(/^\ "(.*)"\ $/)[1];
+                comment = $(this).find('.indentrec:first .norquote').text();
+                if (comment.length) {
+                    comment = comment.match(/^\ "(.*)"\ $/)[1];
+                }
             }
 
             // 生成 retweet 语句，如 "RT @用户名, 用户评论"
