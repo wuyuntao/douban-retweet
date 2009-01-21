@@ -29,10 +29,12 @@
 // @version         0.2
 // @namespace       http://blog.luliban.com/
 // @description     Forward sayings and recommendations on Douban miniblog page
-// @include         http://www.douban.com/contacts/
+// @include         http://www.douban.com/contacts/*
 // @require         http://jquery-douban.appspot.com/media/scripts/jquery.js
 // @reason          Initial commit
 // ==/UserScript==
+
+if(/\/contacts\/(\?.*)?$/.test(location.href)) {
 
 $(function() {
     // 获取我说输入框和推荐表单
@@ -154,4 +156,6 @@ function waitDialog(callback) {
     } else {
         if (typeof callback == 'function') return callback(dialog);
     }
+}
+
 }
