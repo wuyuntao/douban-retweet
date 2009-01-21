@@ -1,6 +1,6 @@
 // Douban Retweet
 // A Greasemonkey script allows you to forward sayings and recommendations on Douban miniblog page
-// version 0.1
+// version 0.2
 // Copyright (c) 2009 Wu Yuntao <http://blog.luliban.com/>
 //
 // This program is free software: you can redistribute it and/or modify
@@ -57,7 +57,7 @@ $(function() {
         if (/说：$/.test($(this).children('.pl').text())) {
 
             // 获取相关用户名和用户说
-            var name = $(this).children('a').text();
+            var name = $(this).children('a:first').text();
             var say = $(this).find('.quote > .inq').text();
 
             // 生成 retweet 语句，如 "RT @用户名, 用户说"
@@ -73,23 +73,23 @@ $(function() {
         if (/^推荐/.test($(this).children('.pl').text())) {
 
             // 获取用户名
-            var name = $(this).children('a').text();
+            var name = $(this).children('a:first').text();
 
             // 获取推荐的站外网址
             var url = $(this).children('.broadsmr').text();
 
             // 获取推荐的站内（包括九点）网址
-            if (!/^http:\/\//.test(url)) {
-                url = $(this).children('.pl').children('a:first').attr('href');
+            if (!/^https?:\/\//.test(url)) {
+                url = $(this).children('.pl').children('a:last').attr('href');
             }
 
             // 为豆瓣本地URI加上host
-            if (!/^http:\/\//.test(url) && /^\/.*/.test(url)) {
+            if (!/^https?:\/\//.test(url) && /^\/.*/.test(url)) {
                 url = 'http://www.douban.com' + url;
             }
 
             // 如果还是无法获取正确的URL，取消这次推荐
-            if (!/^http:\/\//.test(url)) {
+            if (!/^https?:\/\//.test(url)) {
                 return false;
             }
 
