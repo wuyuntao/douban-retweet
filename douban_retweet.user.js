@@ -30,6 +30,7 @@
 // @namespace       http://blog.luliban.com/
 // @description     Forward sayings and recommendations on Douban miniblog page
 // @include         http://www.douban.com/contacts/
+// @require         http://jquery-douban.appspot.com/media/scripts/jquery.js
 // @reason          Initial commit
 // ==/UserScript==
 
