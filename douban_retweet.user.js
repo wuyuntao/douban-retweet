@@ -26,7 +26,7 @@
 // --------------------------------------------------------------------
 // ==UserScript==
 // @name            Douban Retweet
-// @version         0.1
+// @version         0.2
 // @namespace       http://blog.luliban.com/
 // @description     Forward sayings and recommendations on Douban miniblog page
 // @include         http://www.douban.com/contacts/
